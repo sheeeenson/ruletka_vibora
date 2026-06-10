@@ -96,13 +96,17 @@ h1 {
 
 .wheel-wrap {
   position: relative;
+  z-index: 1;
   width: min(100%, 560px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
+  isolation: isolate;
 }
 
 #wheel {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.32));
@@ -135,7 +139,7 @@ h1 {
 
 .spin-button {
   position: absolute;
-  z-index: 3;
+  z-index: 999;
   width: clamp(100px, 22%, 136px);
   aspect-ratio: 1;
   border: 8px solid rgba(255, 255, 255, 0.85);

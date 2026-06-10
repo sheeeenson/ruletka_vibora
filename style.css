@@ -1,0 +1,253 @@
+:root {
+  --bg: #130f1f;
+  --panel: rgba(255, 255, 255, 0.1);
+  --panel-strong: rgba(255, 255, 255, 0.16);
+  --text: #fff8ff;
+  --muted: rgba(255, 248, 255, 0.72);
+  --pink: #ff6fb5;
+  --red: #ff3b4f;
+  --blue: #3d73ff;
+  --pearl: #f5edf8;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255, 111, 181, 0.32), transparent 32rem),
+    radial-gradient(circle at bottom right, rgba(61, 115, 255, 0.28), transparent 30rem),
+    var(--bg);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #ffd3ea;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2.4rem, 8vw, 5.4rem);
+  line-height: 0.92;
+}
+
+.subtitle {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.12fr) minmax(300px, 0.88fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.wheel-card,
+.controls-card {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 32px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+.wheel-card {
+  position: relative;
+  padding: clamp(20px, 4vw, 42px);
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.wheel-wrap {
+  position: relative;
+  width: min(100%, 560px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+#wheel {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.32));
+}
+
+.pointer {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  z-index: 4;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-top: 54px solid #fff;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.28));
+}
+
+.pointer::after {
+  content: "";
+  position: absolute;
+  top: -48px;
+  left: -13px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffcf44;
+}
+
+.spin-button {
+  position: absolute;
+  z-index: 3;
+  width: clamp(100px, 22%, 136px);
+  aspect-ratio: 1;
+  border: 8px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  color: #261427;
+  background: linear-gradient(145deg, #fff, #ffd8ef);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.spin-button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34);
+}
+
+.spin-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.result {
+  min-height: 32px;
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  font-weight: 900;
+}
+
+.controls-card {
+  padding: 26px;
+}
+
+.controls-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.controls-header h2 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+#counter {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--panel-strong);
+  color: #ffe4f3;
+  font-weight: 800;
+}
+
+.sector-inputs {
+  display: grid;
+  gap: 12px;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  gap: 10px;
+}
+
+.input-row input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  padding: 13px 15px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.input-row input:focus {
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+.input-row input:disabled {
+  color: rgba(255, 248, 255, 0.82);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.confirm-button {
+  border: 0;
+  border-radius: 16px;
+  color: #231225;
+  background: #fff;
+  font-size: 1.25rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.confirm-button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.hint {
+  margin: 18px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .pointer {
+    top: 18px;
+  }
+}

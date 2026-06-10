@@ -140,7 +140,7 @@ function createInputRow(value, index, isLocked) {
   const button = document.createElement("button");
   button.type = "button";
   button.className = "confirm-button";
-  button.textContent = isLocked ? "✓" : "＋";
+  button.textContent = "✓";
   button.disabled = isLocked || state.isSpinning;
   button.setAttribute("aria-label", "Добавить сектор");
 
@@ -171,8 +171,8 @@ function createInputRow(value, index, isLocked) {
 
 function getWinningIndex() {
   const slice = (Math.PI * 2) / state.sectors.length;
-  const pointerAngle = normalizeAngle(-Math.PI / 2 - state.rotation);
-  return Math.floor(pointerAngle / slice) % state.sectors.length;
+  const angleUnderPointer = normalizeAngle(-state.rotation);
+  return Math.floor(angleUnderPointer / slice) % state.sectors.length;
 }
 
 function easeOutCubic(t) {

@@ -99,14 +99,14 @@ h1 {
   z-index: 1;
   width: min(100%, 560px);
   aspect-ratio: 1;
-  display: grid;
-  place-items: center;
+  display: block;
   isolation: isolate;
 }
 
 #wheel {
   position: relative;
   z-index: 1;
+  display: block;
   width: 100%;
   height: 100%;
   filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.32));
@@ -139,27 +139,32 @@ h1 {
 
 .spin-button {
   position: absolute;
-  z-index: 999;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
   width: clamp(100px, 22%, 136px);
   aspect-ratio: 1;
-  border: 8px solid rgba(255, 255, 255, 0.85);
+  border: 8px solid rgba(255, 255, 255, 0.95);
   border-radius: 50%;
   color: #261427;
   background: linear-gradient(145deg, #fff, #ffd8ef);
   font-weight: 900;
   cursor: pointer;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  pointer-events: auto;
   transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
 }
 
 .spin-button:hover:not(:disabled) {
-  transform: scale(1.05);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34);
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.44);
 }
 
 .spin-button:disabled {
   cursor: not-allowed;
-  opacity: 0.62;
+  opacity: 0.82;
 }
 
 .result {

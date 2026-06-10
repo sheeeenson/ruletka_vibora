@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Рулетка выбора</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">Колесо фортуны</p>
+        <h1>Рулетка выбора</h1>
+        <p class="subtitle">Добавьте до 10 вариантов, нажмите кнопку в центре колеса и получите случайный выбор.</p>
+      </section>
+
+      <section class="workspace" aria-label="Рулетка выбора">
+        <div class="wheel-card">
+          <div class="pointer" aria-hidden="true"></div>
+          <div class="wheel-wrap">
+            <canvas id="wheel" width="640" height="640" aria-label="Колесо выбора"></canvas>
+            <button id="spinButton" class="spin-button" type="button">Крутить</button>
+          </div>
+          <p id="result" class="result" role="status">Добавьте минимум 2 сектора</p>
+        </div>
+
+        <aside class="controls-card">
+          <div class="controls-header">
+            <h2>Секторы</h2>
+            <span id="counter">0 / 10</span>
+          </div>
+          <form id="sectorForm" class="sector-form" autocomplete="off">
+            <div id="sectorInputs" class="sector-inputs"></div>
+          </form>
+          <p class="hint">Введите название сектора и нажмите галочку. После этого появится следующая строка.</p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
